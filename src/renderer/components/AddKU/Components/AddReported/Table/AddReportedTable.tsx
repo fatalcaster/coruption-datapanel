@@ -27,7 +27,6 @@ export const AddReportedTable: React.FC<AddReportedTableProps> = ({}) => {
 
     const toggleRemoveContextMenu = (index: number | undefined) => {
         setRemovingRow(index);
-        console.log(`switching context ${index}`);
     };
     const addReported = (
         id: string,

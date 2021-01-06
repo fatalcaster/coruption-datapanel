@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ContextRow } from "../../ContextRow/ContextRow";
 import { AddDamaged } from "../Prompt/AddDamaged";
 import styles from "./style.css";
 
@@ -6,31 +7,82 @@ interface AddDamagedTableProps {}
 
 export const AddDamagedTable: React.FC<AddDamagedTableProps> = ({}) => {
     const [addingReported, setAddingReported] = useState(true);
-    const [reportedPeople, setReportedList] = useState<
-        ReportedTableElements[]
+    const [damagedIndividuals, setDamagedIndividuals] = useState<
+        DamagedIndividual[]
     >();
+    const [damagedLegalEntities, setDamagedLegalEntities] = useState<
+        DamagedLegalEntity[]
+    >();
+    const [removingRowIndividual, setRemovingRowIndividual] = useState<
+        number | undefined
+    >(undefined);
+    const [removingRowEntity, setRemovingRowEntity] = useState<
+        number | undefined
+    >(undefined);
+    const removeDamagedIndividual = (index: number) => {
+        if (!damagedIndividuals) return;
+        const newList = damagedIndividuals
+            .slice(0, index)
+            .concat(
+                index + 1 < damagedIndividuals.length
+                    ? damagedIndividuals.slice(index + 1)
+                    : []
+            );
+        setDamagedIndividuals(newList);
+    };
 
-    const addReported = (
+    const toggleRemoveContextMenuIndividual = (index: number | undefined) => {
+        setRemovingRowIndividual(index);
+    };
+
+    const removeDamagedEntity = (index: number) => {
+        if (!damagedLegalEntities) return;
+        const newList = damagedLegalEntities
+            .slice(0, index)
+            .concat(
+                index + 1 < damagedLegalEntities.length
+                    ? damagedLegalEntities.slice(index + 1)
+                    : []
+            );
+        setDamagedLegalEntities(newList);
+    };
+
+    const toggleRemoveContextMenuEntity = (index: number | undefined) => {
+        setRemovingRowEntity(index);
+    };
+
+    const addDamagedLegalEntities = (
+        id: string,
+        name: string,
+
+        address: string
+    ) => {
+        const newList = damagedLegalEntities
+            ? damagedLegalEntities.concat({
+                  id,
+                  name,
+                  address,
+              })
+            : [{ id, name, address }];
+        setDamagedLegalEntities(newList);
+    };
+    const addDamagedIndividuals = (
         id: string,
         name: string,
         surname: string,
         father_name: string,
-        birth_place: string,
-        residence: string
+        address: string
     ) => {
-        const newList = reportedPeople
-            ? reportedPeople.concat({
+        const newList = damagedIndividuals
+            ? damagedIndividuals.concat({
                   id,
                   name,
                   surname,
                   father_name,
-                  residence,
-                  birth_place,
+                  address,
               })
-            : [{ id, name, surname, father_name, residence, birth_place }];
-        console.log("proso");
-        console.log(newList);
-        setReportedList(newList);
+            : [{ id, name, surname, father_name, address }];
+        setDamagedIndividuals(newList);
     };
     return (
         <>
@@ -48,24 +100,50 @@ export const AddDamagedTable: React.FC<AddDamagedTableProps> = ({}) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {reportedPeople
-                                    ? reportedPeople.map(
-                                          (
-                                              value: ReportedTableElements,
-                                              index
-                                          ) => {
-                                              return (
-                                                  <tr key={index}>
+                                {damagedIndividuals
+                                    ? damagedIndividuals.map(
+                                          (value: DamagedIndividual, index) => {
+                                              return removingRowIndividual !=
+                                                  index ? (
+                                                  <tr
+                                                      key={index}
+                                                      onContextMenu={() =>
+                                                          toggleRemoveContextMenuIndividual(
+                                                              index
+                                                          )
+                                                      }
+                                                  >
                                                       <td>{value.surname}</td>
                                                       <td>
                                                           {value.father_name}
                                                       </td>
                                                       <td>{value.name}</td>
                                                       <td>{value.id}</td>
-                                                      <td>
-                                                          {value.birth_place}
+                                                      <td>{value.address}</td>
+                                                  </tr>
+                                              ) : (
+                                                  <tr key={index}>
+                                                      <td colSpan={5}>
+                                                          <ContextRow
+                                                              id={`reported-row-${index}`}
+                                                              key={index}
+                                                              title={"Обриши"}
+                                                              color={"#D9534F"}
+                                                              onClick={() => {
+                                                                  removeDamagedIndividual(
+                                                                      index
+                                                                  );
+                                                                  toggleRemoveContextMenuIndividual(
+                                                                      undefined
+                                                                  );
+                                                              }}
+                                                              onClickOutside={() => {
+                                                                  toggleRemoveContextMenuIndividual(
+                                                                      undefined
+                                                                  );
+                                                              }}
+                                                          />
                                                       </td>
-                                                      <td>{value.residence}</td>
                                                   </tr>
                                               );
                                           }
@@ -88,17 +166,48 @@ export const AddDamagedTable: React.FC<AddDamagedTableProps> = ({}) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {reportedPeople
-                                    ? reportedPeople.map(
+                                {damagedLegalEntities
+                                    ? damagedLegalEntities.map(
                                           (
-                                              value: ReportedTableElements,
+                                              value: DamagedLegalEntity,
                                               index
                                           ) => {
-                                              return (
+                                              return removingRowEntity !=
+                                                  index ? (
+                                                  <tr
+                                                      key={index}
+                                                      onContextMenu={() =>
+                                                          toggleRemoveContextMenuEntity(
+                                                              index
+                                                          )
+                                                      }
+                                                  >
+                                                      <td>{value.name}</td>
+                                                      <td>{value.id}</td>
+                                                      <td>{value.address}</td>
+                                                  </tr>
+                                              ) : (
                                                   <tr key={index}>
-                                                      <td>{value.surname}</td>
-                                                      <td>
-                                                          {value.father_name}
+                                                      <td colSpan={3}>
+                                                          <ContextRow
+                                                              id={`reported-row-${index}`}
+                                                              key={index}
+                                                              title={"Обриши"}
+                                                              color={"#D9534F"}
+                                                              onClick={() => {
+                                                                  removeDamagedEntity(
+                                                                      index
+                                                                  );
+                                                                  toggleRemoveContextMenuEntity(
+                                                                      undefined
+                                                                  );
+                                                              }}
+                                                              onClickOutside={() => {
+                                                                  toggleRemoveContextMenuEntity(
+                                                                      undefined
+                                                                  );
+                                                              }}
+                                                          />
                                                       </td>
                                                   </tr>
                                               );
@@ -122,7 +231,8 @@ export const AddDamagedTable: React.FC<AddDamagedTableProps> = ({}) => {
                                 onClose={() => {
                                     setAddingReported(true);
                                 }}
-                                onSubmit={addReported}
+                                onSubmitIndividual={addDamagedIndividuals}
+                                onSubmitLegalEntity={addDamagedLegalEntities}
                             />
                         )}
                     </div>

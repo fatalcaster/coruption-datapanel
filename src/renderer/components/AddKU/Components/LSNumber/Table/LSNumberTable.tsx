@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ContextRow } from "../../ContextRow/ContextRow";
 import { AddLSNumber } from "../Form/AddLSNumber";
 import styles from "./style.css";
 
@@ -8,13 +9,26 @@ export const LSNumberTable: React.FC<LSNumberTableProps> = ({}) => {
     const [addingLS, setAddingLS] = useState(true);
     const [LSNumbers, setLSNumbers] = useState<string[]>();
 
+    const [removingRow, setRemovingRow] = useState<number | undefined>(
+        undefined
+    );
+    const removeAct = (index: number) => {
+        if (!LSNumbers) return;
+        const newList = LSNumbers.slice(0, index).concat(
+            index + 1 < LSNumbers.length ? LSNumbers.slice(index + 1) : []
+        );
+        setLSNumbers(newList);
+    };
     const addAct = (name: string) => {
         if (LSNumbers && LSNumbers.includes(name)) return;
         const newList = LSNumbers ? LSNumbers.concat(name) : [name];
-        console.log("proso");
-        console.log(newList);
         setLSNumbers(newList);
     };
+
+    const toggleRemoveContextMenu = (index: number | undefined) => {
+        setRemovingRow(index);
+    };
+
     return (
         <div className={styles.reportedCentered}>
             <div className={styles.reportedNL}>
@@ -31,10 +45,37 @@ export const LSNumberTable: React.FC<LSNumberTableProps> = ({}) => {
                         <tbody>
                             {LSNumbers
                                 ? LSNumbers.map((value: string, index) => {
-                                      return (
-                                          <tr key={index}>
+                                      return removingRow != index ? (
+                                          <tr
+                                              key={index}
+                                              onContextMenu={() =>
+                                                  toggleRemoveContextMenu(index)
+                                              }
+                                          >
                                               <td className={styles.textCenter}>
                                                   {value}
+                                              </td>
+                                          </tr>
+                                      ) : (
+                                          <tr key={index}>
+                                              <td colSpan={1}>
+                                                  <ContextRow
+                                                      id={`reported-row-${index}`}
+                                                      key={index}
+                                                      title={"Обриши"}
+                                                      color={"#D9534F"}
+                                                      onClick={() => {
+                                                          removeAct(index);
+                                                          toggleRemoveContextMenu(
+                                                              undefined
+                                                          );
+                                                      }}
+                                                      onClickOutside={() => {
+                                                          toggleRemoveContextMenu(
+                                                              undefined
+                                                          );
+                                                      }}
+                                                  />
                                               </td>
                                           </tr>
                                       );
