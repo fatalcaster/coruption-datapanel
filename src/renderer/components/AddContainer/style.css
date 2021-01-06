@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    z-index: 9;
+    height: 75%;
+    width: 80%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    border: #333 2px solid;
+    border-top: none;
+}
+
+.minimized {
+    width: 800px;
+    height: 500px;
+}

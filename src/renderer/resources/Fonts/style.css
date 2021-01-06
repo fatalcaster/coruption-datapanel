@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "Segoe MDL2 Assets";
+    src: url("SegoeMDL2Assets.woff2") format("woff2"),
+        url("SegoeMDL2Assets.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

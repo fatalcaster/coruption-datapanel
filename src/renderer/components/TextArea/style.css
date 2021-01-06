@@ -1,0 +1,17 @@
+.textBlock {
+    border-radius: 0.3rem;
+    max-height: 4rem;
+    width: 100%;
+    max-width: 50vw;
+    resize: none;
+}
+
+.textBlock:focus {
+    outline: none;
+    border: solid black 2px;
+    font-size: 20px;
+}
+
+.textarea_wrapper {
+    position: relative;
+}

@@ -1,0 +1,60 @@
+{
+    "name": "electron-webpack-quick-start",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+        "dev": "electron-webpack dev",
+        "compile": "electron-webpack",
+        "create:migration": "npx mikro-orm migration:create",
+        "create:schema": "npx mikro-orm schema:create -r",
+        "dist": "yarn compile && electron-builder",
+        "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.32",
+        "@fortawesome/free-solid-svg-icons": "^5.15.1",
+        "@fortawesome/react-fontawesome": "^0.1.13",
+        "@mikro-orm/cli": "^4.3.0",
+        "@mikro-orm/core": "^4.3.1",
+        "@mikro-orm/migrations": "^4.3.0",
+        "@mikro-orm/sqlite": "^4.3.0",
+        "argon2": "^0.27.0",
+        "custom-electron-titlebar": "^3.2.5",
+        "react": "^17.0.1",
+        "react-contextmenu": "^2.14.0",
+        "react-dom": "^17.0.1",
+        "react-draggable": "^4.4.3",
+        "source-map-support": "^0.5.16"
+    },
+    "devDependencies": {
+        "@babel/preset-react": "^7.12.5",
+        "@types/electron-devtools-installer": "^2.2.0",
+        "@types/node": "12.12.22",
+        "@types/react": "^16.9.56",
+        "@types/react-dom": "^16.9.9",
+        "@types/react-router-dom": "^5.1.6",
+        "electron": "8.2.0",
+        "electron-builder": "^22.4.1",
+        "electron-devtools-installer": "^3.1.1",
+        "electron-webpack": "^2.8.2",
+        "electron-webpack-ts": "^4.0.1",
+        "formik": "^2.2.5",
+        "react-router-dom": "^5.2.0",
+        "ts-node": "^9.0.0",
+        "types": "^0.1.1",
+        "typescript": "^4.0.5",
+        "webpack": "~4.42.1"
+    },
+    "mikro-orm": {
+        "useTsNode": true,
+        "configPaths": [
+            "./src/mikro-orm.config.ts",
+            "./dist/mikro-orm.config.js"
+        ]
+    },
+    "electronWebpack": {
+        "renderer": {
+            "webpackConfig": "webpack.renderer.js"
+        }
+    }
+}

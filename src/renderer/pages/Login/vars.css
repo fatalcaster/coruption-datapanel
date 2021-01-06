@@ -1,0 +1,8 @@
+:root {
+  --gridMaxWidth: 20rem;
+  --gridWidth: 90%;
+  --formFieldMargin: 0.875rem;
+  --loginColor: #eee;
+  --baseColor: #606468;
+  --iconFill: var(--baseColor);
+}

@@ -1,0 +1,27 @@
+.hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 10px;
+}
+
+.input_form {
+    background: #eee;
+    border: none;
+    padding: 15px 18px;
+    margin: 8px 0;
+    width: 80%;
+    text-align: center;
+}
+
+.input_form:focus {
+    transform: scale(1.05);
+    border: #333 solid;
+    border-radius: 0.3rem;
+    outline: none;
+    font-size: 18px;
+}

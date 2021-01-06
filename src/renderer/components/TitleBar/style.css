@@ -1,0 +1,42 @@
+.close {
+    font-family: "Segoe MDL2 Assets";
+    font-style: unset;
+    height: 100%;
+    background-color: inherit;
+    border: none;
+    color: #ccc;
+    width: 45px;
+}
+.close:hover {
+    background-color: #d51324;
+}
+
+.pushRight {
+    margin-left: auto;
+}
+
+.controls {
+    font-family: "Segoe MDL2 Assets";
+    font-style: normal;
+    height: 100%;
+    background-color: inherit;
+    border: none;
+    color: #ccc;
+    width: 50px;
+}
+
+.controls:hover {
+    background-color: #424242;
+}
+
+.titleBar {
+    position: absolute;
+    display: flex;
+    height: 30px;
+    background-color: #333;
+    width: 100%;
+}
+
+.minimized {
+    width: 40%;
+}

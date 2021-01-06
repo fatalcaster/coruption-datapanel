@@ -1,0 +1,64 @@
+@import "./vars.css";
+
+.align {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 700px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 0.6rem;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: absolute;
+    overflow: hidden;
+}
+
+.title {
+    margin-top: 140px;
+    color: #333;
+    text-transform: uppercase;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form_container {
+    background: inherit;
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.submit_button {
+    border: 1px solid #333;
+    border-radius: 20px;
+    background: #333;
+    color: #fff;
+    font-weight: bold;
+    padding: 12px 45px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.submit_button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+.submit_button:disabled {
+    opacity: 0.2;
+    cursor: progress;
+}

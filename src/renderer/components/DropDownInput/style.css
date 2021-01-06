@@ -1,0 +1,28 @@
+.listInput {
+    font-size: 15px;
+
+    background-color: inherit;
+    border: none;
+    padding: 2px;
+    height: 1.5rem;
+    border-bottom: black solid 2px;
+    outline: none;
+    text-align: center;
+}
+
+.listInput:focus {
+    scale: (1.1);
+    font-size: 18px;
+}
+
+input::-webkit-calendar-picker-indicator {
+    background-color: inherit;
+}
+
+.listInput:hover {
+    border-bottom: black solid 2px;
+}
+
+.listInput:focus {
+    border-bottom: black solid 2px;
+}

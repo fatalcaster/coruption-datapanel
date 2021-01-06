@@ -1,0 +1,92 @@
+::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+}
+body::-webkit-scrollbar-track {
+    background: orange; /* color of the tracking area */
+}
+
+::-webkit-scrollbar-button {
+    background: #ccc;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: blue; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid orange; /* creates padding around scroll thumb */
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-pref-height: 20;
+    -fx-pref-width: 20;
+    -fx-background-insets: 5;
+}
+
+.contentTable {
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    width: 98%;
+    table-layout: fixed;
+    -webkit-user-select: none;
+    overflow: hidden;
+    /* border-radius: 0.8rem 0.8rem 0 0; */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.contentTable thead tr {
+    background-color: #333;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.contentTable th,
+.contentTable td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd;
+    overflow: auto;
+}
+
+.contentTable tbody tr {
+    white-space: nowrap;
+}
+
+.scrollView {
+    max-height: 70px;
+    height: 70px;
+    overflow: auto;
+}
+
+ul {
+    height: 35px;
+    list-style-type: none;
+    overflow: auto;
+}
+
+/* li {
+     overflow: scroll;
+} */
+
+th:first-child,
+th:nth-child(2),
+th:nth-child(3),
+th:nth-child(4) {
+    width: 75px;
+    overflow: hidden;
+}
+
+th:nth-child(8) {
+    width: 80px;
+}
+
+.contentTable tbody tr:nth-of-type(even) {
+    background-color: #f4f4f4;
+}
+
+/* .contentTable tbody tr:active {
+    border: black solid 4px;
+    overflow: visible;
+} */

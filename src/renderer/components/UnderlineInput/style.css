@@ -1,0 +1,40 @@
+:root {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.input {
+    font-size: 15px;
+    text-align: center;
+    width: 30%;
+    min-width: 130px;
+    height: 1.5rem;
+    border: none;
+    background-color: inherit;
+    outline: none;
+    max-width: 150px;
+    border-bottom: 2px black solid;
+}
+
+.invalid {
+    border-bottom: 2px #d9534f solid;
+}
+
+.input:focus {
+    outline: none;
+    scale: (1.1);
+    font-size: 18px;
+}
+
+.hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 10px;
+}
