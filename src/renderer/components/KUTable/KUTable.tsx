@@ -5,7 +5,7 @@ interface KUTableRowProps {
     data?: string[][];
 }
 
-export const KUTable: React.FC<KUTableRowProps> = ({ data }) => {
+export const KUTable: React.FC<KUTableRowProps> = ({}) => {
     return (
         <table className={styles.contentTable}>
             <thead>

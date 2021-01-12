@@ -1,5 +1,9 @@
-import { Field, Form, Formik } from "formik";
+import { Field, Formik } from "formik";
 import React from "react";
+import {
+    notEmpty,
+    validLegalID,
+} from "../../../../../ValidationFunctions/ValidationFunctions";
 import UnderlineInput from "../../../../UnderlineInput/UnderlineInput";
 import styles from "./style.css";
 interface AddLegalEntityProps {
@@ -13,21 +17,6 @@ export const AddLegalEntity: React.FC<AddLegalEntityProps> = ({
     onClose,
     onSubmit,
 }) => {
-    const validName = (value: string, state: any): string | undefined => {
-        let error;
-
-        if (value.length === 0) error = "Empty field";
-        if (/\d/.test(value)) "Number inside the field";
-        return error;
-    };
-    const validID = (value: string): string | undefined => {
-        let error;
-        if (value.length !== 8) error = "Empty field";
-
-        if (!/^[0-9]*$/.test(value)) "NaN inside the field";
-        return error;
-    };
-
     return (
         <div className={styles.buttonLater}>
             <Formik
@@ -42,78 +31,78 @@ export const AddLegalEntity: React.FC<AddLegalEntityProps> = ({
                     address: "",
                 }}
             >
-                {({ values, isSubmitting, errors, touched }) => (
-                    <Form>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td
-                                        className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                {({ isSubmitting, errors, touched, handleSubmit }) => (
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td
+                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                >
+                                    <Field
+                                        validate={notEmpty}
+                                        name="damaged_name"
+                                        placeholder="Назив"
+                                        type="input"
+                                        as={UnderlineInput}
+                                        notValid={
+                                            errors.damaged_name &&
+                                            touched.damaged_name
+                                        }
+                                    />
+                                </td>
+                                <td
+                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                >
+                                    <Field
+                                        validate={validLegalID}
+                                        name="damaged_id"
+                                        placeholder="МБ правног лица"
+                                        type="input"
+                                        as={UnderlineInput}
+                                        notValid={
+                                            errors.damaged_id &&
+                                            touched.damaged_id
+                                        }
+                                    />
+                                </td>
+                                <td
+                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                >
+                                    <Field
+                                        validate={notEmpty}
+                                        name="address"
+                                        placeholder="Адреса"
+                                        type="input"
+                                        as={UnderlineInput}
+                                        notValid={
+                                            errors.address && touched.address
+                                        }
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={styles.addReportedCell}>
+                                    <button
+                                        className={`${styles.buttons} ${styles.save}`}
+                                        type="button"
+                                        onClick={() => {
+                                            handleSubmit();
+                                        }}
+                                        disabled={isSubmitting}
                                     >
-                                        <Field
-                                            validate={validName}
-                                            name="damaged_name"
-                                            placeholder="Назив"
-                                            type="input"
-                                            as={UnderlineInput}
-                                            notValid={
-                                                errors.damaged_name &&
-                                                touched.damaged_name
-                                            }
-                                        />
-                                    </td>
-                                    <td
-                                        className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                        Сачувај
+                                    </button>
+                                    <button
+                                        className={`${styles.buttons} ${styles.close}`}
+                                        disabled={isSubmitting}
+                                        onClick={onClose}
                                     >
-                                        <Field
-                                            validate={validID}
-                                            name="damaged_id"
-                                            placeholder="МБ правног лица"
-                                            type="input"
-                                            as={UnderlineInput}
-                                            notValid={
-                                                errors.damaged_id &&
-                                                touched.damaged_id
-                                            }
-                                        />
-                                    </td>
-                                    <td
-                                        className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
-                                    >
-                                        <Field
-                                            validate={validName}
-                                            name="address"
-                                            placeholder="Адреса"
-                                            type="input"
-                                            as={UnderlineInput}
-                                            notValid={
-                                                errors.address &&
-                                                touched.address
-                                            }
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className={styles.addReportedCell}>
-                                        <button
-                                            className={`${styles.buttons} ${styles.save}`}
-                                            type="submit"
-                                            disabled={isSubmitting}
-                                        >
-                                            Сачувај
-                                        </button>
-                                        <button
-                                            className={`${styles.buttons} ${styles.close}`}
-                                            disabled={isSubmitting}
-                                            onClick={onClose}
-                                        >
-                                            Откажи
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </Form>
+                                        Откажи
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 )}
             </Formik>
         </div>

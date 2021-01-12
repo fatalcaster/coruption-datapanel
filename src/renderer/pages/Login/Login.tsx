@@ -34,7 +34,7 @@ export const Login: React.FC<LoginProps> = ({ history }) => {
                         }}
                         initialValues={{ username: "", password: "" }}
                     >
-                        {({ values, isSubmitting, errors }) => (
+                        {({ isSubmitting, errors }) => (
                             <Form className={styles.form_container}>
                                 <h1 className={styles.title}>Пријава</h1>
                                 <Field

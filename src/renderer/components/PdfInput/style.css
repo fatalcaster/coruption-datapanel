@@ -1,0 +1,11 @@
+.pdfIcon {
+    margin-left: 20px;
+}
+
+.pdfIcon:hover {
+    cursor: pointer;
+    color: #333;
+}
+.noDisplay {
+    display: none;
+}

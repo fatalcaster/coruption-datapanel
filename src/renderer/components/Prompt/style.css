@@ -1,0 +1,79 @@
+.exit {
+    display: flex;
+    z-index: 10;
+    align-self: center;
+    margin-left: 35%;
+    justify-content: center;
+    position: absolute;
+    height: 200px;
+    width: 400px;
+    align-items: center;
+    background-color: #eee;
+    border: 1px #222 solid;
+    border-radius: 3px;
+}
+
+.exit_minimized {
+    margin-left: 200px;
+}
+.exit {
+    display: flex;
+    z-index: 10;
+    align-self: center;
+    margin-left: 35%;
+    justify-content: center;
+    position: absolute;
+    height: 200px;
+    width: 400px;
+    align-items: center;
+    background-color: #eee;
+    border: 1px #222 solid;
+    border-radius: 3px;
+}
+
+.exit_minimized {
+    margin-left: 200px;
+}
+.buttonClosePrompt {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.close:hover {
+    background-color: #d51324;
+    cursor: pointer;
+}
+
+.button,
+.close {
+    width: 100px;
+    height: 30px;
+    background-color: #333;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.button:hover {
+    background-color: #555;
+    cursor: pointer;
+}
+
+.buttonContainer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.promptText {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    font-weight: 300;
+    text-align: center;
+}

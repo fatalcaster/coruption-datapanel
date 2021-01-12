@@ -8,7 +8,7 @@ interface IconProps {
     margin: string;
 }
 
-export const Icon: React.FC<IconProps> = ({ icon, padding, margin }) => {
+export const Icon: React.FC<IconProps> = ({ icon }) => {
     return (
         <div>
             <FontAwesomeIcon icon={icon} size="lg" />

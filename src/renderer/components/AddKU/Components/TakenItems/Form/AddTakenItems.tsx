@@ -1,5 +1,6 @@
-import { Field, Form, Formik } from "formik";
+import { Field, Formik } from "formik";
 import React from "react";
+import { notEmpty } from "../../../../../ValidationFunctions/ValidationFunctions";
 import UnderlineInput from "../../../../UnderlineInput/UnderlineInput";
 import styles from "./style.css";
 interface AddTakenItemsProps {
@@ -16,14 +17,6 @@ export const AddTakenItems: React.FC<AddTakenItemsProps> = ({
     onClose,
     onSubmit,
 }) => {
-    const validName = (value: string): string | undefined => {
-        let error;
-
-        if (value.length === 0) error = "Empty field";
-        if (/\d/.test(value)) "Number inside the field";
-        return error;
-    };
-
     return (
         <div className={styles.buttonLater}>
             <Formik
@@ -37,63 +30,63 @@ export const AddTakenItems: React.FC<AddTakenItemsProps> = ({
                     item_name: "",
                 }}
             >
-                {({ values, isSubmitting, errors, touched }) => (
-                    <Form>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td
-                                        className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                {(props) => (
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td
+                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                >
+                                    <Field
+                                        validate={notEmpty}
+                                        name="verification_number"
+                                        placeholder="Број потврде"
+                                        type="input"
+                                        as={UnderlineInput}
+                                        notValid={
+                                            props.errors.verification_number &&
+                                            props.touched.verification_number
+                                        }
+                                    />
+                                </td>
+                                <td
+                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                >
+                                    <Field
+                                        validate={notEmpty}
+                                        name="item_name"
+                                        placeholder="Достављено"
+                                        type="input"
+                                        as={UnderlineInput}
+                                        notValid={
+                                            props.errors.item_name &&
+                                            props.touched.item_name
+                                        }
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={styles.addReportedCell}>
+                                    <button
+                                        className={`${styles.buttons} ${styles.save}`}
+                                        onClick={() => {
+                                            props.handleSubmit();
+                                        }}
+                                        disabled={props.isSubmitting}
                                     >
-                                        <Field
-                                            validate={validName}
-                                            name="verification_number"
-                                            placeholder="Број потврде"
-                                            type="input"
-                                            as={UnderlineInput}
-                                            notValid={
-                                                errors.verification_number &&
-                                                touched.verification_number
-                                            }
-                                        />
-                                    </td>
-                                    <td
-                                        className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                        Сачувај
+                                    </button>
+                                    <button
+                                        className={`${styles.buttons} ${styles.close}`}
+                                        disabled={props.isSubmitting}
+                                        onClick={onClose}
                                     >
-                                        <Field
-                                            validate={validName}
-                                            name="item_name"
-                                            placeholder="Достављено"
-                                            type="input"
-                                            as={UnderlineInput}
-                                            notValid={
-                                                errors.item_name &&
-                                                touched.item_name
-                                            }
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className={styles.addReportedCell}>
-                                        <button
-                                            className={`${styles.buttons} ${styles.save}`}
-                                            type="submit"
-                                            disabled={isSubmitting}
-                                        >
-                                            Сачувај
-                                        </button>
-                                        <button
-                                            className={`${styles.buttons} ${styles.close}`}
-                                            disabled={isSubmitting}
-                                            onClick={onClose}
-                                        >
-                                            Откажи
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </Form>
+                                        Откажи
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 )}
             </Formik>
         </div>

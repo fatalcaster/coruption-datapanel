@@ -1,24 +1,17 @@
 import React, { useState } from "react";
-import { ContextRow } from "../../ContextRow/ContextRow";
+import { DataTable } from "../../../../DataTable/DataTable";
 import { AddDamaged } from "../Prompt/AddDamaged";
-import styles from "./style.css";
 
 interface AddDamagedTableProps {}
 
 export const AddDamagedTable: React.FC<AddDamagedTableProps> = ({}) => {
-    const [addingReported, setAddingReported] = useState(true);
     const [damagedIndividuals, setDamagedIndividuals] = useState<
         DamagedIndividual[]
     >();
     const [damagedLegalEntities, setDamagedLegalEntities] = useState<
         DamagedLegalEntity[]
     >();
-    const [removingRowIndividual, setRemovingRowIndividual] = useState<
-        number | undefined
-    >(undefined);
-    const [removingRowEntity, setRemovingRowEntity] = useState<
-        number | undefined
-    >(undefined);
+
     const removeDamagedIndividual = (index: number) => {
         if (!damagedIndividuals) return;
         const newList = damagedIndividuals
@@ -31,10 +24,6 @@ export const AddDamagedTable: React.FC<AddDamagedTableProps> = ({}) => {
         setDamagedIndividuals(newList);
     };
 
-    const toggleRemoveContextMenuIndividual = (index: number | undefined) => {
-        setRemovingRowIndividual(index);
-    };
-
     const removeDamagedEntity = (index: number) => {
         if (!damagedLegalEntities) return;
         const newList = damagedLegalEntities
@@ -45,10 +34,6 @@ export const AddDamagedTable: React.FC<AddDamagedTableProps> = ({}) => {
                     : []
             );
         setDamagedLegalEntities(newList);
-    };
-
-    const toggleRemoveContextMenuEntity = (index: number | undefined) => {
-        setRemovingRowEntity(index);
     };
 
     const addDamagedLegalEntities = (
@@ -84,160 +69,33 @@ export const AddDamagedTable: React.FC<AddDamagedTableProps> = ({}) => {
             : [{ id, name, surname, father_name, address }];
         setDamagedIndividuals(newList);
     };
+    const headersIndividuals = [
+        "Презиме",
+        "Име оца",
+        "Име",
+        "ЈМБГ",
+        "Пребивалиште",
+    ];
+    const headersEntities = ["Назив", "МБ Лица", "Адреса"];
     return (
         <>
-            <div className={styles.reportedCentered}>
-                <div className={styles.reportedNL}>
-                    <div className={styles.tableScroll}>
-                        <table className={styles.reportedTable}>
-                            <thead className={styles.reportedHeader}>
-                                <tr>
-                                    <th>Презиме</th>
-                                    <th>Име оца</th>
-                                    <th>Име</th>
-                                    <th>ЈМБГ</th>
-                                    <th>Пребивалиште</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {damagedIndividuals
-                                    ? damagedIndividuals.map(
-                                          (value: DamagedIndividual, index) => {
-                                              return removingRowIndividual !=
-                                                  index ? (
-                                                  <tr
-                                                      key={index}
-                                                      onContextMenu={() =>
-                                                          toggleRemoveContextMenuIndividual(
-                                                              index
-                                                          )
-                                                      }
-                                                  >
-                                                      <td>{value.surname}</td>
-                                                      <td>
-                                                          {value.father_name}
-                                                      </td>
-                                                      <td>{value.name}</td>
-                                                      <td>{value.id}</td>
-                                                      <td>{value.address}</td>
-                                                  </tr>
-                                              ) : (
-                                                  <tr key={index}>
-                                                      <td colSpan={5}>
-                                                          <ContextRow
-                                                              id={`reported-row-${index}`}
-                                                              key={index}
-                                                              title={"Обриши"}
-                                                              color={"#D9534F"}
-                                                              onClick={() => {
-                                                                  removeDamagedIndividual(
-                                                                      index
-                                                                  );
-                                                                  toggleRemoveContextMenuIndividual(
-                                                                      undefined
-                                                                  );
-                                                              }}
-                                                              onClickOutside={() => {
-                                                                  toggleRemoveContextMenuIndividual(
-                                                                      undefined
-                                                                  );
-                                                              }}
-                                                          />
-                                                      </td>
-                                                  </tr>
-                                              );
-                                          }
-                                      )
-                                    : undefined}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.reportedCentered}>
-                <div className={styles.reportedNL}>
-                    <div className={styles.tableScroll}>
-                        <table className={styles.reportedTable}>
-                            <thead className={styles.reportedHeader}>
-                                <tr>
-                                    <th>Назив</th>
-                                    <th>МБ Лица</th>
-                                    <th>Адреса</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {damagedLegalEntities
-                                    ? damagedLegalEntities.map(
-                                          (
-                                              value: DamagedLegalEntity,
-                                              index
-                                          ) => {
-                                              return removingRowEntity !=
-                                                  index ? (
-                                                  <tr
-                                                      key={index}
-                                                      onContextMenu={() =>
-                                                          toggleRemoveContextMenuEntity(
-                                                              index
-                                                          )
-                                                      }
-                                                  >
-                                                      <td>{value.name}</td>
-                                                      <td>{value.id}</td>
-                                                      <td>{value.address}</td>
-                                                  </tr>
-                                              ) : (
-                                                  <tr key={index}>
-                                                      <td colSpan={3}>
-                                                          <ContextRow
-                                                              id={`reported-row-${index}`}
-                                                              key={index}
-                                                              title={"Обриши"}
-                                                              color={"#D9534F"}
-                                                              onClick={() => {
-                                                                  removeDamagedEntity(
-                                                                      index
-                                                                  );
-                                                                  toggleRemoveContextMenuEntity(
-                                                                      undefined
-                                                                  );
-                                                              }}
-                                                              onClickOutside={() => {
-                                                                  toggleRemoveContextMenuEntity(
-                                                                      undefined
-                                                                  );
-                                                              }}
-                                                          />
-                                                      </td>
-                                                  </tr>
-                                              );
-                                          }
-                                      )
-                                    : undefined}
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div className={styles.reportedButtonDiv}>
-                        {addingReported ? (
-                            <button
-                                className={styles.reportedButton}
-                                onClick={() => setAddingReported(false)}
-                            >
-                                Додај
-                            </button>
-                        ) : (
-                            <AddDamaged
-                                onClose={() => {
-                                    setAddingReported(true);
-                                }}
-                                onSubmitIndividual={addDamagedIndividuals}
-                                onSubmitLegalEntity={addDamagedLegalEntities}
-                            />
-                        )}
-                    </div>
-                </div>
-            </div>
+            <DataTable
+                name="damagedIndividuals"
+                headers={headersIndividuals}
+                data={damagedIndividuals}
+                onDelete={removeDamagedIndividual}
+            />
+            <DataTable
+                name="damagedLegalEntities"
+                headers={headersEntities}
+                data={damagedLegalEntities}
+                onDelete={removeDamagedEntity}
+                twoInserts={{
+                    onSubmitIndividual: addDamagedIndividuals,
+                    onSubmitLegalEntity: addDamagedLegalEntities,
+                }}
+                children={AddDamaged}
+            />
         </>
     );
 };

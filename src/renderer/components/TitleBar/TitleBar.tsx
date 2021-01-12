@@ -8,15 +8,20 @@ interface TitleBarProps {
     onResize?:
         | ((event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
         | undefined;
+    dragClass?: string;
 }
 
-export const TitleBar: React.FC<TitleBarProps> = ({ onClose, onResize }) => {
+export const TitleBar: React.FC<TitleBarProps> = ({
+    onClose,
+    onResize,
+    dragClass,
+}) => {
     const [maximized, setMaximized] = useState(true);
     return (
         <div
             className={`${
                 maximized ? styles.titleBar : styles.titleBar
-            } TITLEBAR`}
+            } ${dragClass}`}
             onDoubleClick={() => {
                 if (onResize) onResize();
             }}

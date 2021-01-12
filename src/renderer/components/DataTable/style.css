@@ -1,0 +1,69 @@
+.headerTable,
+.bodyTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 626px;
+    -webkit-user-select: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+    font-size: 0.9em;
+}
+
+.headerTable tbody tr,
+.bodyTable tbody tr {
+    word-wrap: normal;
+    height: 25px;
+    text-align: center;
+}
+
+.headerTable tbody td,
+.bodyTable tbody td {
+    overflow: auto;
+    max-width: 30px;
+    padding: 5px 3px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.headerTable tbody tr {
+    background-color: #333;
+    color: white;
+}
+
+.bodyTable tbody tr {
+    background-color: #fcfcfc;
+}
+
+.bodyTable {
+    margin-bottom: 15px;
+}
+
+.bodyContainer {
+    overflow: auto;
+    max-height: 250px;
+}
+
+.centerContainer {
+    display: block;
+    margin-bottom: 25px;
+}
+
+.buttonDiv {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addButton {
+    background-color: #333;
+    border: none;
+    padding: 5px;
+    color: #ffffff;
+    border-radius: 0.4rem;
+    width: 50%;
+}
+
+.addButton:hover {
+    background-color: #555;
+    cursor: pointer;
+}

@@ -11,7 +11,7 @@
 }
 
 .containerLeft {
-    margin: 2rem;
+    margin: 0.5rem;
     display: inline-flex;
     flex-direction: column;
     width: 49.5%;
@@ -19,7 +19,7 @@
 }
 
 .containerRight {
-    margin: 2rem;
+    margin: 0.5rem;
     display: inline-flex;
     flex-direction: column;
     width: 49.5%;
@@ -51,5 +51,9 @@
 }
 
 .mTop {
-    margin-top: 8rem;
+    margin-top: 14rem;
+}
+
+.test {
+    color: green;
 }

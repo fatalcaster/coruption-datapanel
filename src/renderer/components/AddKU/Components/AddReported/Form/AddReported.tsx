@@ -1,5 +1,9 @@
-import { Field, Form, Formik } from "formik";
+import { Field, Formik } from "formik";
 import React from "react";
+import {
+    notEmpty,
+    validID,
+} from "../../../../../ValidationFunctions/ValidationFunctions";
 import UnderlineInput from "./../../../../UnderlineInput/UnderlineInput";
 import styles from "./style.css";
 interface AddReportedProps {
@@ -20,21 +24,6 @@ export const AddReported: React.FC<AddReportedProps> = ({
     onClose,
     onSubmit,
 }) => {
-    const validName = (value: string, state: any): string | undefined => {
-        let error;
-
-        if (value.length === 0) error = "Empty field";
-        if (/\d/.test(value)) "Number inside the field";
-        return error;
-    };
-    const validID = (value: string): string | undefined => {
-        let error;
-        if (value.length !== 13) error = "Empty field";
-
-        if (!/^[0-9]*$/.test(value)) "NaN inside the field";
-        return error;
-    };
-
     return (
         <div className={styles.buttonLater}>
             <Formik
@@ -59,125 +48,126 @@ export const AddReported: React.FC<AddReportedProps> = ({
                     reported_birth_place: "",
                 }}
             >
-                {({ values, isSubmitting, errors, touched }) => (
-                    <Form>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td
-                                        className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                {({ isSubmitting, errors, touched, handleSubmit }) => (
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td
+                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                >
+                                    <Field
+                                        validate={notEmpty}
+                                        name="reported_surname"
+                                        placeholder="Презиме"
+                                        type="input"
+                                        as={UnderlineInput}
+                                        notValid={
+                                            errors.reported_surname &&
+                                            touched.reported_surname
+                                        }
+                                    />
+                                </td>
+                                <td
+                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                >
+                                    <Field
+                                        validate={notEmpty}
+                                        name="reported_father_name"
+                                        placeholder="Име оца"
+                                        type="input"
+                                        as={UnderlineInput}
+                                        notValid={
+                                            errors.reported_father_name &&
+                                            touched.reported_father_name
+                                        }
+                                    />
+                                </td>
+                                <td
+                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                >
+                                    <Field
+                                        validate={notEmpty}
+                                        name="reported_name"
+                                        placeholder="Име"
+                                        type="input"
+                                        as={UnderlineInput}
+                                        notValid={
+                                            errors.reported_name &&
+                                            touched.reported_name
+                                        }
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td
+                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                >
+                                    <Field
+                                        validate={validID}
+                                        name="reported_id"
+                                        placeholder="ЈМБГ"
+                                        type="input"
+                                        as={UnderlineInput}
+                                        notValid={
+                                            errors.reported_id &&
+                                            touched.reported_id
+                                        }
+                                    />
+                                </td>
+                                <td
+                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                >
+                                    <Field
+                                        validate={notEmpty}
+                                        name="reported_birth_place"
+                                        placeholder="Место рођења"
+                                        type="input"
+                                        as={UnderlineInput}
+                                        notValid={
+                                            errors.reported_birth_place &&
+                                            touched.reported_birth_place
+                                        }
+                                    />
+                                </td>
+                                <td
+                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                >
+                                    <Field
+                                        validate={notEmpty}
+                                        name="reported_residence"
+                                        placeholder="Пребивалиште"
+                                        type="input"
+                                        as={UnderlineInput}
+                                        notValid={
+                                            errors.reported_residence &&
+                                            touched.reported_residence
+                                        }
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={styles.addReportedCell}>
+                                    <button
+                                        className={`${styles.buttons} ${styles.save}`}
+                                        type="button"
+                                        onClick={() => {
+                                            handleSubmit();
+                                        }}
+                                        disabled={isSubmitting}
                                     >
-                                        <Field
-                                            validate={validName}
-                                            name="reported_surname"
-                                            placeholder="Презиме"
-                                            type="input"
-                                            as={UnderlineInput}
-                                            notValid={
-                                                errors.reported_surname &&
-                                                touched.reported_surname
-                                            }
-                                        />
-                                    </td>
-                                    <td
-                                        className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                        Сачувај
+                                    </button>
+                                    <button
+                                        className={`${styles.buttons} ${styles.close}`}
+                                        disabled={isSubmitting}
+                                        onClick={onClose}
                                     >
-                                        <Field
-                                            validate={validName}
-                                            name="reported_father_name"
-                                            placeholder="Име оца"
-                                            type="input"
-                                            as={UnderlineInput}
-                                            notValid={
-                                                errors.reported_father_name &&
-                                                touched.reported_father_name
-                                            }
-                                        />
-                                    </td>
-                                    <td
-                                        className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
-                                    >
-                                        <Field
-                                            validate={validName}
-                                            name="reported_name"
-                                            placeholder="Име"
-                                            type="input"
-                                            as={UnderlineInput}
-                                            notValid={
-                                                errors.reported_name &&
-                                                touched.reported_name
-                                            }
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td
-                                        className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
-                                    >
-                                        <Field
-                                            validate={validID}
-                                            name="reported_id"
-                                            placeholder="ЈМБГ"
-                                            type="input"
-                                            as={UnderlineInput}
-                                            notValid={
-                                                errors.reported_id &&
-                                                touched.reported_id
-                                            }
-                                        />
-                                    </td>
-                                    <td
-                                        className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
-                                    >
-                                        <Field
-                                            validate={validName}
-                                            name="reported_birth_place"
-                                            placeholder="Место рођења"
-                                            type="input"
-                                            as={UnderlineInput}
-                                            notValid={
-                                                errors.reported_birth_place &&
-                                                touched.reported_birth_place
-                                            }
-                                        />
-                                    </td>
-                                    <td
-                                        className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
-                                    >
-                                        <Field
-                                            validate={validName}
-                                            name="reported_residence"
-                                            placeholder="Пребивалиште"
-                                            type="input"
-                                            as={UnderlineInput}
-                                            notValid={
-                                                errors.reported_residence &&
-                                                touched.reported_residence
-                                            }
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className={styles.addReportedCell}>
-                                        <button
-                                            className={`${styles.buttons} ${styles.save}`}
-                                            type="submit"
-                                            disabled={isSubmitting}
-                                        >
-                                            Сачувај
-                                        </button>
-                                        <button
-                                            className={`${styles.buttons} ${styles.close}`}
-                                            disabled={isSubmitting}
-                                            onClick={onClose}
-                                        >
-                                            Откажи
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </Form>
+                                        Откажи
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 )}
             </Formik>
         </div>

@@ -30,6 +30,8 @@
 
 .reportedTable tbody tr {
     white-space: nowrap;
+    width: 100%;
+    display: flex;
 }
 
 .buttonLayer {
@@ -38,8 +40,11 @@
 }
 
 .tableScroll {
-    max-height: 300px;
+    max-height: 250px;
     overflow: auto;
+    width: 100%;
+    display: block;
+    flex-direction: column;
 }
 
 .reportedButtonDiv {

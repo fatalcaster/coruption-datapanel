@@ -6,27 +6,28 @@ interface AddDamagedProps {
     onClose:
         | ((event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
         | undefined;
-    onSubmitIndividual: (
-        id: string,
-        name: string,
-        surname: string,
-        fatherName: string,
-        residence: string
-    ) => void | undefined;
-    onSubmitLegalEntity: (
-        id: string,
-        name: string,
-        address: string
-    ) => void | undefined;
+    onSubmit: {
+        onSubmitIndividual: (
+            id: string,
+            name: string,
+            surname: string,
+            fatherName: string,
+            residence: string
+        ) => void | undefined;
+        onSubmitLegalEntity: (
+            id: string,
+            name: string,
+            address: string
+        ) => void | undefined;
+    };
 }
 
 export const AddDamaged: React.FC<AddDamagedProps> = ({
     onClose,
-    onSubmitIndividual,
-    onSubmitLegalEntity,
+    onSubmit,
 }) => {
     const [damageType, setDamageType] = useState(0);
-
+    const { onSubmitIndividual, onSubmitLegalEntity } = onSubmit;
     const switchIndividual = () => {
         setDamageType(1);
     };
