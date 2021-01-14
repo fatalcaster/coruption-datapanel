@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { DataTable } from "../../../../DataTable/DataTable";
-import { AddLSNumber } from "../../LSNumber/Form/AddLSNumber";
 import { AddTakenItems } from "../Form/AddTakenItems";
 
 interface TakenItemsTableProps {}

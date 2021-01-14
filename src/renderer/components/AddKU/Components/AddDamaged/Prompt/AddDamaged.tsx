@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AddIndividual } from "../FormIndividual/AddIndividual";
 import { AddLegalEntity } from "../FormLegalEntity/AddLegalEntity";
-import styles from "./style.css";
+import styles from "./../../FormStyle/formstyles.css";
 interface AddDamagedProps {
     onClose:
         | ((event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
@@ -57,7 +57,7 @@ export const AddDamaged: React.FC<AddDamagedProps> = ({
             <table>
                 <tbody>
                     <tr>
-                        <td colSpan={2} className={styles.addReportedCell}>
+                        <td colSpan={2} className={styles.addCell}>
                             <button
                                 className={`${styles.buttons} ${styles.save}`}
                                 onClick={switchIndividual}

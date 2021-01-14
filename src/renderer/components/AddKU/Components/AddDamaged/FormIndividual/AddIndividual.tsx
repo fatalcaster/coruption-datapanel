@@ -5,7 +5,7 @@ import {
     validID,
 } from "../../../../../ValidationFunctions/ValidationFunctions";
 import UnderlineInput from "../../../../UnderlineInput/UnderlineInput";
-import styles from "./style.css";
+import styles from "./../../FormStyle/formstyles.css";
 interface AddIndividualProps {
     onClose:
         | ((event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
@@ -51,7 +51,7 @@ export const AddIndividual: React.FC<AddIndividualProps> = ({
                         <tbody>
                             <tr>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -66,7 +66,7 @@ export const AddIndividual: React.FC<AddIndividualProps> = ({
                                     />
                                 </td>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -81,7 +81,7 @@ export const AddIndividual: React.FC<AddIndividualProps> = ({
                                     />
                                 </td>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -98,7 +98,7 @@ export const AddIndividual: React.FC<AddIndividualProps> = ({
                             </tr>
                             <tr>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={validID}
@@ -113,7 +113,7 @@ export const AddIndividual: React.FC<AddIndividualProps> = ({
                                     />
                                 </td>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -129,7 +129,7 @@ export const AddIndividual: React.FC<AddIndividualProps> = ({
                                 </td>
                             </tr>
                             <tr>
-                                <td className={styles.addReportedCell}>
+                                <td className={styles.addCell}>
                                     <button
                                         className={`${styles.buttons} ${styles.save}`}
                                         type="button"

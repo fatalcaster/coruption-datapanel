@@ -2,7 +2,7 @@ import { Field, Formik } from "formik";
 import React from "react";
 import { notEmpty } from "../../../../../ValidationFunctions/ValidationFunctions";
 import UnderlineInput from "../../../../UnderlineInput/UnderlineInput";
-import styles from "./style.css";
+import styles from "./../../FormStyle/formstyles.css";
 interface AddTakenItemsProps {
     onClose:
         | ((event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
@@ -35,7 +35,7 @@ export const AddTakenItems: React.FC<AddTakenItemsProps> = ({
                         <tbody>
                             <tr>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -50,7 +50,7 @@ export const AddTakenItems: React.FC<AddTakenItemsProps> = ({
                                     />
                                 </td>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -66,7 +66,7 @@ export const AddTakenItems: React.FC<AddTakenItemsProps> = ({
                                 </td>
                             </tr>
                             <tr>
-                                <td className={styles.addReportedCell}>
+                                <td className={styles.addCell}>
                                     <button
                                         className={`${styles.buttons} ${styles.save}`}
                                         onClick={() => {

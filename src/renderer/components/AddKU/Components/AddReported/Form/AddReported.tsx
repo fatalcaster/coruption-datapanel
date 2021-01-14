@@ -5,7 +5,7 @@ import {
     validID,
 } from "../../../../../ValidationFunctions/ValidationFunctions";
 import UnderlineInput from "./../../../../UnderlineInput/UnderlineInput";
-import styles from "./style.css";
+import styles from "./../../FormStyle/formstyles.css";
 interface AddReportedProps {
     onClose:
         | ((event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
@@ -53,7 +53,7 @@ export const AddReported: React.FC<AddReportedProps> = ({
                         <tbody>
                             <tr>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -68,7 +68,7 @@ export const AddReported: React.FC<AddReportedProps> = ({
                                     />
                                 </td>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -83,7 +83,7 @@ export const AddReported: React.FC<AddReportedProps> = ({
                                     />
                                 </td>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -100,7 +100,7 @@ export const AddReported: React.FC<AddReportedProps> = ({
                             </tr>
                             <tr>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={validID}
@@ -115,7 +115,7 @@ export const AddReported: React.FC<AddReportedProps> = ({
                                     />
                                 </td>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -130,7 +130,7 @@ export const AddReported: React.FC<AddReportedProps> = ({
                                     />
                                 </td>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -146,7 +146,7 @@ export const AddReported: React.FC<AddReportedProps> = ({
                                 </td>
                             </tr>
                             <tr>
-                                <td className={styles.addReportedCell}>
+                                <td className={styles.addCell}>
                                     <button
                                         className={`${styles.buttons} ${styles.save}`}
                                         type="button"

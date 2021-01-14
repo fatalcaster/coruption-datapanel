@@ -13,8 +13,6 @@ import { LSNumberTable } from "../Components/LSNumber/Table/LSNumberTable";
 import { TakenItemsTable } from "../Components/TakenItems/Table/TakenItemsTable";
 import { TitleBar } from "./../../TitleBar/TitleBar";
 import styles from "./style.css";
-import stylesLeft from "./styleLeft.css";
-import stylesRight from "./styleRight.css";
 import { notEmpty } from "./../../../ValidationFunctions/ValidationFunctions";
 
 interface AddKULayoutProps {
@@ -59,10 +57,10 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                 {(props) => (
                     <div className={styles.columnContainer}>
                         <div className={styles.containerLeft}>
-                            <table className={stylesLeft.KUMainLeftTable}>
+                            <table className={styles.KUMainLeftTable}>
                                 <tbody>
                                     <tr>
-                                        <td className={stylesLeft.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>КУ БРОЈ</h4>
                                         </td>
                                         <td>
@@ -84,7 +82,7 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className={stylesLeft.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>БРОЈ</h4>
                                         </td>
                                         <td>
@@ -97,13 +95,13 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className={stylesLeft.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>ДАТУМ УНОСА</h4>
                                         </td>
-                                        <td className={stylesLeft.al}>
+                                        <td className={styles.al}>
                                             <div
                                                 className={
-                                                    stylesLeft.calendarContainer
+                                                    styles.calendarContainer
                                                 }
                                             >
                                                 <Field
@@ -114,15 +112,15 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className={stylesLeft.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>ОШТЕЋЕНИ</h4>
                                         </td>
-                                        <td className={stylesLeft.al}>
+                                        <td className={styles.al}>
                                             <AddDamagedTable />
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className={stylesLeft.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>ПРИЈАВЉЕНИ</h4>
                                         </td>
                                         <td>
@@ -130,20 +128,18 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            className={stylesLeft.titleColumn}
-                                        ></td>
+                                        <td className={styles.titleColumn}></td>
                                         <td>
                                             <CriminalActsTable />
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className={stylesLeft.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>ПРИМЕЊЕНЕ МЕРЕ</h4>
                                         </td>
                                         <td
                                             className={
-                                                stylesLeft.appliedMeasuresCell
+                                                styles.appliedMeasuresCell
                                             }
                                         >
                                             <Field
@@ -167,13 +163,13 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                         </td>
                                     </tr>
                                     <tr style={{ marginBottom: "5px" }}>
-                                        <td className={stylesLeft.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>ДАТУМ ДОСТАВЉАЊА ВЈТ</h4>
                                         </td>
-                                        <td className={stylesLeft.al}>
+                                        <td className={styles.al}>
                                             <div
                                                 className={
-                                                    stylesLeft.calendarContainer
+                                                    styles.calendarContainer
                                                 }
                                             >
                                                 <Field
@@ -184,15 +180,13 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            className={stylesRight.titleColumn}
-                                        ></td>
-                                        <td className={stylesRight.al}>
+                                        <td className={styles.titleColumn}></td>
+                                        <td className={styles.al}>
                                             <LSNumberTable />
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className={stylesRight.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>ОДУЗЕТИ ПРЕДМЕТИ</h4>
                                         </td>
                                         <td>
@@ -200,13 +194,13 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className={stylesRight.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>ДОСТАВЉЕНО СКА</h4>
                                         </td>
-                                        <td className={stylesRight.al}>
+                                        <td className={styles.al}>
                                             <div
                                                 className={
-                                                    stylesRight.calendarContainer
+                                                    styles.calendarContainer
                                                 }
                                             >
                                                 <Field
@@ -217,7 +211,7 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className={stylesRight.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>ВЕЗА (ПО, ОО)</h4>
                                         </td>
                                         <td>
@@ -229,7 +223,7 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className={stylesRight.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>ЗАДУЖЕН РАДНИК</h4>
                                         </td>
                                         <td>
@@ -246,13 +240,13 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className={stylesRight.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>МАТЕРИЈАЛНА ШТЕТА</h4>
                                         </td>
                                         <td>
                                             <div
                                                 className={
-                                                    stylesRight.materialDamageDiv
+                                                    styles.materialDamageDiv
                                                 }
                                             >
                                                 <div>
@@ -272,7 +266,7 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className={stylesRight.titleColumn}>
+                                        <td className={styles.titleColumn}>
                                             <h4>НАПОМЕНА</h4>
                                         </td>
                                         <td>
@@ -287,11 +281,11 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                         <td colSpan={2}>
                                             <div
                                                 className={
-                                                    stylesRight.KUMainButtonsCell
+                                                    styles.KUMainButtonsCell
                                                 }
                                             >
                                                 <button
-                                                    className={`${stylesRight.buttons} ${stylesRight.save}`}
+                                                    className={`${styles.buttons} ${styles.save}`}
                                                     type="submit"
                                                     onClick={() => {
                                                         props.handleSubmit();
@@ -304,7 +298,7 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                                                 </button>
 
                                                 <button
-                                                    className={`${stylesRight.buttons} ${stylesRight.close}`}
+                                                    className={`${styles.buttons} ${styles.close}`}
                                                     disabled={
                                                         props.isSubmitting
                                                     }
@@ -322,7 +316,7 @@ export const AddKULayout: React.FC<AddKULayoutProps> = ({ onClose }) => {
                         <div
                             className={`${styles.containerRight} ${styles.mTop}`}
                         >
-                            <table className={stylesRight.KUMainLeftTable}>
+                            <table className={styles.KUMainLeftTable}>
                                 <tbody></tbody>
                             </table>
                         </div>

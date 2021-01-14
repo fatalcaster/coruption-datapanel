@@ -5,7 +5,7 @@ import {
     validLegalID,
 } from "../../../../../ValidationFunctions/ValidationFunctions";
 import UnderlineInput from "../../../../UnderlineInput/UnderlineInput";
-import styles from "./style.css";
+import styles from "./../../FormStyle/formstyles.css";
 interface AddLegalEntityProps {
     onClose:
         | ((event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
@@ -36,7 +36,7 @@ export const AddLegalEntity: React.FC<AddLegalEntityProps> = ({
                         <tbody>
                             <tr>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -51,7 +51,7 @@ export const AddLegalEntity: React.FC<AddLegalEntityProps> = ({
                                     />
                                 </td>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={validLegalID}
@@ -66,7 +66,7 @@ export const AddLegalEntity: React.FC<AddLegalEntityProps> = ({
                                     />
                                 </td>
                                 <td
-                                    className={`${styles.addReportedCell} ${styles.addReportedCellInput}`}
+                                    className={`${styles.addCell} ${styles.addCellInput}`}
                                 >
                                     <Field
                                         validate={notEmpty}
@@ -81,7 +81,7 @@ export const AddLegalEntity: React.FC<AddLegalEntityProps> = ({
                                 </td>
                             </tr>
                             <tr>
-                                <td className={styles.addReportedCell}>
+                                <td className={styles.addCell}>
                                     <button
                                         className={`${styles.buttons} ${styles.save}`}
                                         type="button"

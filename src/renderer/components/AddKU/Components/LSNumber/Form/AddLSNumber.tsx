@@ -2,7 +2,7 @@ import { Field, Formik } from "formik";
 import React from "react";
 import { notEmpty } from "../../../../../ValidationFunctions/ValidationFunctions";
 import UnderlineInput from "../../../../UnderlineInput/UnderlineInput";
-import styles from "./style.css";
+import styles from "./../../FormStyle/formstyles.css";
 interface AddLSNumberProps {
     onClose:
         | ((event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
@@ -30,7 +30,7 @@ export const AddLSNumber: React.FC<AddLSNumberProps> = ({
                     <table>
                         <tbody>
                             <tr>
-                                <td className={`${styles.addCriminalAct}`}>
+                                <td className={`${styles.addCell}`}>
                                     <Field
                                         validate={notEmpty}
                                         name="ls_number"
@@ -45,7 +45,7 @@ export const AddLSNumber: React.FC<AddLSNumberProps> = ({
                                 </td>
                             </tr>
                             <tr>
-                                <td className={styles.addReportedCell}>
+                                <td className={styles.addCell}>
                                     <button
                                         className={`${styles.buttons} ${styles.save}`}
                                         type={"button"}
