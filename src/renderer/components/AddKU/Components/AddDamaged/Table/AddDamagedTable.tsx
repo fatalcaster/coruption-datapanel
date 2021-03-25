@@ -2,16 +2,23 @@ import React, { useState } from "react";
 import { DataTable } from "../../../../DataTable/DataTable";
 import { AddDamaged } from "../Prompt/AddDamaged";
 
-interface AddDamagedTableProps {}
+interface AddDamagedTableProps {
+    damagedIndividuals: DamagedIndividual[] | undefined;
+    setDamagedIndividuals: (
+        value: React.SetStateAction<DamagedIndividual[] | undefined>
+    ) => void;
+    damagedLegalEntities: DamagedLegalEntity[] | undefined;
+    setDamagedLegalEntities: (
+        value: React.SetStateAction<DamagedLegalEntity[] | undefined>
+    ) => void;
+}
 
-export const AddDamagedTable: React.FC<AddDamagedTableProps> = ({}) => {
-    const [damagedIndividuals, setDamagedIndividuals] = useState<
-        DamagedIndividual[]
-    >();
-    const [damagedLegalEntities, setDamagedLegalEntities] = useState<
-        DamagedLegalEntity[]
-    >();
-
+export const AddDamagedTable: React.FC<AddDamagedTableProps> = ({
+    damagedIndividuals,
+    setDamagedIndividuals,
+    damagedLegalEntities,
+    setDamagedLegalEntities,
+}) => {
     const removeDamagedIndividual = (index: number) => {
         if (!damagedIndividuals) return;
         const newList = damagedIndividuals

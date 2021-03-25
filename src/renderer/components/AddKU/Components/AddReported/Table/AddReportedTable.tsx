@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { DataTable } from "../../../../DataTable/DataTable";
 import { AddReported } from "../Form/AddReported";
 
-interface AddReportedTableProps {}
+interface AddReportedTableProps {
+    reportedPeople: ReportedTableElements[] | undefined;
+    setReportedList: (
+        value: React.SetStateAction<ReportedTableElements[] | undefined>
+    ) => void;
+}
 
-export const AddReportedTable: React.FC<AddReportedTableProps> = ({}) => {
-    const [reportedPeople, setReportedList] = useState<
-        ReportedTableElements[]
-    >();
-
+export const AddReportedTable: React.FC<AddReportedTableProps> = ({
+    reportedPeople,
+    setReportedList,
+}) => {
     const removeReported = (index: number) => {
         if (!reportedPeople) return;
         const newList = reportedPeople

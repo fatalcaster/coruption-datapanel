@@ -32,9 +32,7 @@ export const DataTable: React.FC<DataTableProps> = ({
     const unsetRemovalContext = () => {
         setRemovingRow(undefined);
     };
-    console.log(headers);
     const AddBlock = children;
-    console.log("Addblock " + AddBlock);
     return (
         <div className={styles.centerContainer}>
             <div>

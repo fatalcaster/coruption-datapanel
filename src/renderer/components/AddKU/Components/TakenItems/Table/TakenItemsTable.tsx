@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import { DataTable } from "../../../../DataTable/DataTable";
 import { AddTakenItems } from "../Form/AddTakenItems";
 
-interface TakenItemsTableProps {}
+interface TakenItemsTableProps {
+    takenItems: TakenItem[] | undefined;
+    setItemsList: (
+        value: React.SetStateAction<TakenItem[] | undefined>
+    ) => void;
+}
 
-export const TakenItemsTable: React.FC<TakenItemsTableProps> = ({}) => {
-    const [takenItems, setItemsList] = useState<TakenItem[]>();
-
+export const TakenItemsTable: React.FC<TakenItemsTableProps> = ({
+    takenItems,
+    setItemsList,
+}) => {
     const removeItem = (index: number) => {
         if (!takenItems) return;
         const newList = takenItems

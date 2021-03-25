@@ -22,7 +22,6 @@ export const Login: React.FC<LoginProps> = ({ history }) => {
                                 data.username,
                                 data.password
                             );
-                            console.log(auth);
                             if (auth.auth) history.replace("/KUWorkspace");
                             else
                                 actions.setFieldError(

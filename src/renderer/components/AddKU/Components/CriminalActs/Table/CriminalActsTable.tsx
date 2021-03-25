@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { DataTable } from "../../../../DataTable/DataTable";
 import { AddCriminalActs } from "../Form/AddCriminalActs";
 
-interface CriminalActsTableProps {}
+interface CriminalActsTableProps {
+    criminalActs: string[] | undefined;
+    setActsList: (value: React.SetStateAction<string[] | undefined>) => void;
+}
 
-export const CriminalActsTable: React.FC<CriminalActsTableProps> = ({}) => {
-    const [criminalActs, setActsList] = useState<string[]>();
-
+export const CriminalActsTable: React.FC<CriminalActsTableProps> = ({
+    criminalActs,
+    setActsList,
+}) => {
     const removeAct = (index: number) => {
         if (!criminalActs) return;
         const newList = criminalActs

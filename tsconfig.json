@@ -10,7 +10,8 @@
         "esModuleInterop": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        "strictPropertyInitialization": false
     },
     "extends": "./node_modules/electron-webpack/tsconfig-base.json",
     "exclude": ["node_modules"],

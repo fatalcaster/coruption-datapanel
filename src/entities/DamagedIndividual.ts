@@ -1,8 +1,7 @@
 import { Column, Entity, PrimaryColumn, OneToMany } from "typeorm";
-import { TakenItem } from "./TakenItem";
 
 @Entity()
-export class Reported {
+export class DamagedIndividual {
     @PrimaryColumn()
     id!: string;
 
@@ -13,14 +12,8 @@ export class Reported {
     surname!: string;
 
     @Column()
-    fathers_name!: string;
+    father_name!: string;
 
     @Column()
     address!: string;
-
-    @Column()
-    birth_place!: string;
-
-    @OneToMany((_type) => TakenItem, (item) => item.owner)
-    taken_items: TakenItem[];
 }

@@ -20,7 +20,7 @@ export const AddContainerHelper: React.FC<AddContainerProps> = ({
     // const [maximized, setMaximizedLayout] = useState(false);
     const updatePromptVisibility = usePromptVisibilityUpdate();
 
-    console.log("test" + updatePromptVisibility);
+    // console.log("test" + updatePromptVisibility);
     return (
         <Draggable
             enableUserSelectHack={false}

@@ -6,8 +6,10 @@ import { format as formatUrl } from "url";
 import installExtension, {
     REACT_DEVELOPER_TOOLS,
 } from "electron-devtools-installer";
-import DB from "../DBInitizaliation";
-import mikroConfig from "./../mikro-orm.config";
+import { createConnection } from "typeorm";
+
+// import { Worker } from "./../entities/Worker";
+import typeormConfig from "./../typeorm.config";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -58,6 +60,8 @@ function createMainWindow() {
     return window;
 }
 
+createConnection(typeormConfig);
+
 const main = async () => {
     // quit application when all windows are closed
     app.on("window-all-closed", () => {
@@ -74,20 +78,13 @@ const main = async () => {
         }
     });
 
+    app.allowRendererProcessReuse = true;
     // create main BrowserWindow when electron is ready
     app.on("ready", () => {
         mainWindow = createMainWindow();
     });
 
-    await DB.initialize({ config: mikroConfig! });
-
-    /*const t = DB.em.create(User, {
-        name: "Vojin",
-        surname: "Milovic",
-        password: await argon2.hash("Hemijska125"),
-        username: "mr_vojin",
-    });
-    DB.em.persistAndFlush(t);*/
+    //
 };
 
 main().catch((err) => {

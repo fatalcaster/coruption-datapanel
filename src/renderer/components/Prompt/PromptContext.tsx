@@ -30,10 +30,6 @@ export function PromptProvider({ children }: IChildren) {
         setVisibility(false);
     };
 
-    useEffect(() => {
-        console.log("trsh" + visible);
-    }, [visible]);
-
     const setVisible = async () => {
         setVisibility(true);
     };

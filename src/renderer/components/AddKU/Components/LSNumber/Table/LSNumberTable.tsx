@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { DataTable } from "../../../../DataTable/DataTable";
 import { AddLSNumber } from "../Form/AddLSNumber";
 
-interface LSNumberTableProps {}
+interface LSNumberTableProps {
+    LSNumbers: string[] | undefined;
+    setLSNumbers: (value: React.SetStateAction<string[] | undefined>) => void;
+}
 
-export const LSNumberTable: React.FC<LSNumberTableProps> = ({}) => {
-    const [LSNumbers, setLSNumbers] = useState<string[]>();
-
+export const LSNumberTable: React.FC<LSNumberTableProps> = ({
+    LSNumbers,
+    setLSNumbers,
+}) => {
     const removeLSNumber = (index: number) => {
         if (!LSNumbers) return;
         const newList = LSNumbers.slice(0, index).concat(

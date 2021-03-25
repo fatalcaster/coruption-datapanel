@@ -1,6 +1,6 @@
 import argon2 from "argon2";
-import { User } from "../../entities/User";
-import DB from "./../../DBInitizaliation";
+// import { User } from "../../entities/User";
+// import DB from "./../../DBInitizaliation";
 
 interface Error {
     field: string;
@@ -67,35 +67,35 @@ export async function LogUserIn(
     username: string,
     password: string
 ): Promise<ServerResponse> {
-    const validUsername = checkUsername(username);
-    if (validUsername !== null) return validUsername;
+    // const validUsername = checkUsername(username);
+    // if (validUsername !== null) return validUsername;
 
-    if (!DB.em) await DB.initialize();
-    console.log(typeof DB.em);
-    const user = await DB.em.findOne(User, { username: username });
-    if (!user)
-        return {
-            auth: false,
-            error: {
-                field: "username",
-                message: "Корисник није пронађен!",
-            },
-            response: "404",
-        };
+    // if (!DB.em) await DB.initialize();
+    // console.log(typeof DB.em);
+    // const user = await DB.em.findOne(User, { username: username });
+    // if (!user)
+    //     return {
+    //         auth: false,
+    //         error: {
+    //             field: "username",
+    //             message: "Корисник није пронађен!",
+    //         },
+    //         response: "404",
+    //     };
 
-    const validPassword = checkPassword(password);
-    if (validPassword !== null) return validPassword;
+    // const validPassword = checkPassword(password);
+    // if (validPassword !== null) return validPassword;
 
-    if (!(await argon2.verify(user.password, password))) {
-        return {
-            auth: false,
-            error: {
-                field: "password",
-                message: "Унета лозинка није тачна!",
-            },
-            response: "401",
-        };
-    }
+    // if (!(await argon2.verify(user.password, password))) {
+    //     return {
+    //         auth: false,
+    //         error: {
+    //             field: "password",
+    //             message: "Унета лозинка није тачна!",
+    //         },
+    //         response: "401",
+    //     };
+    // }
     return {
         auth: true,
         response: "200",
