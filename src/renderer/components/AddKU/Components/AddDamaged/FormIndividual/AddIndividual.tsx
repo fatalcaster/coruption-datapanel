@@ -11,10 +11,10 @@ interface AddIndividualProps {
         | ((event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
         | undefined;
     onSubmit: (
-        id: string,
-        name: string,
         surname: string,
         fatherName: string,
+        name: string,
+        id: string,
         residence: string
     ) => void | undefined;
 }
@@ -29,10 +29,10 @@ export const AddIndividual: React.FC<AddIndividualProps> = ({
                 onSubmit={async (data, actions) => {
                     actions.setSubmitting(true);
                     onSubmit(
-                        data.reported_id,
-                        data.reported_name,
                         data.reported_surname,
                         data.reported_father_name,
+                        data.reported_name,
+                        data.reported_id,
                         data.reported_residence
                     );
                     onClose ? onClose() : () => {};

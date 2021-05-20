@@ -26,23 +26,23 @@ export const AddReportedTable: React.FC<AddReportedTableProps> = ({
     };
 
     const addReported = (
-        id: string,
-        name: string,
         surname: string,
-        father_name: string,
+        fathers_name: string,
+        name: string,
+        id: string,
         birth_place: string,
-        residence: string
+        address: string
     ) => {
         const newList = reportedPeople
             ? reportedPeople.concat({
-                  id,
-                  name,
                   surname,
-                  father_name,
-                  residence,
+                  fathers_name,
+                  name,
+                  id,
+                  address,
                   birth_place,
               })
-            : [{ id, name, surname, father_name, residence, birth_place }];
+            : [{ surname, fathers_name, name, id, address, birth_place }];
         setReportedList(newList);
     };
     const headers = [

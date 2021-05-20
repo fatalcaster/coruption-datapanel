@@ -2,6 +2,7 @@ interface DamagedLegalEntity {
     name: string;
     id: string;
     address: string;
+    ku?: string;
 }
 
 interface DamagedIndividual {
@@ -10,4 +11,5 @@ interface DamagedIndividual {
     father_name: string;
     address: string;
     id: string;
+    ku?: string;
 }

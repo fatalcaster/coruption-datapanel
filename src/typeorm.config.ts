@@ -12,7 +12,6 @@ import { ProsecutionNumber } from "./entities/ProsecutionNumber";
 import { Report } from "./entities/Report";
 import { Reported } from "./entities/Reported";
 import { TakenItem } from "./entities/TakenItem";
-import { User } from "./entities/User";
 import { Worker } from "./entities/Worker";
 
 export default {
@@ -22,21 +21,20 @@ export default {
     logging: true,
     logger: "advanced-console",
     entities: [
-        // Reported,
-        // TakenItem,
-        // Worker,
-        // KU,
-        // LSNumber,
-        // MeasureTaken,
-        // Crime,
-        // DamagedIndividual,
-        // DamagedLegalEntity,
-        // ConnectionNumber,
-        // PO,
-        // ProsecutionNumber,
-        // Report,
-        // Emergencie,
-        User,
+        Reported,
+        TakenItem,
+        Worker,
+        KU,
+        LSNumber,
+        MeasureTaken,
+        Crime,
+        DamagedIndividual,
+        DamagedLegalEntity,
+        ConnectionNumber,
+        PO,
+        ProsecutionNumber,
+        Report,
+        Emergencie,
     ],
     synchronize: true,
 } as SqliteConnectionOptions;

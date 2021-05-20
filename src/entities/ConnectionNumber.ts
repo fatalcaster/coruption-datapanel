@@ -8,8 +8,8 @@ export class ConnectionNumber {
     id!: string;
 
     @OneToMany((_type) => KU, (ku) => ku.po_connection)
-    ku: KU[];
+    ku?: KU[];
 
     @OneToMany((_type) => PO, (po) => po.ku_connection)
-    po: PO[];
+    po?: PO[];
 }

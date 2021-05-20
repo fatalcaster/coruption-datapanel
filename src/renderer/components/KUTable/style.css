@@ -30,7 +30,7 @@ body::-webkit-scrollbar-thumb {
     min-width: 400px;
     width: 98%;
     table-layout: fixed;
-    -webkit-user-select: none;
+    --webkit-user-select: none;
     overflow: hidden;
     /* border-radius: 0.8rem 0.8rem 0 0; */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);

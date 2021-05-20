@@ -41,24 +41,6 @@ export const NavBar: React.FC<NavBarProps> = ({ events }) => {
                     size="lg"
                     onClick={events[2]}
                 />
-                <FontAwesomeIcon
-                    icon={faFileExcel}
-                    className={styles.navItem}
-                    size="lg"
-                    onClick={events[3]}
-                />
-                <FontAwesomeIcon
-                    icon={faPrint}
-                    className={styles.navItem}
-                    size="lg"
-                    onClick={events[4]}
-                />
-                <FontAwesomeIcon
-                    icon={faUser}
-                    className={styles.navItem}
-                    size="lg"
-                    onClick={events[5]}
-                />
             </ul>
         </nav>
     );

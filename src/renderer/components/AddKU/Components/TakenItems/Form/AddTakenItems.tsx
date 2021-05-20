@@ -7,10 +7,7 @@ interface AddTakenItemsProps {
     onClose:
         | ((event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
         | undefined;
-    onSubmit: (
-        verification_number: string,
-        item_name: string
-    ) => void | undefined;
+    onSubmit: (id: string, delivered_to: string) => void | undefined;
 }
 
 export const AddTakenItems: React.FC<AddTakenItemsProps> = ({
@@ -22,12 +19,12 @@ export const AddTakenItems: React.FC<AddTakenItemsProps> = ({
             <Formik
                 onSubmit={async (data, actions) => {
                     actions.setSubmitting(true);
-                    onSubmit(data.verification_number, data.item_name);
+                    onSubmit(data.id, data.delivered_to);
                     onClose ? onClose() : () => {};
                 }}
                 initialValues={{
-                    verification_number: "",
-                    item_name: "",
+                    id: "",
+                    delivered_to: "",
                 }}
             >
                 {(props) => (
@@ -39,13 +36,12 @@ export const AddTakenItems: React.FC<AddTakenItemsProps> = ({
                                 >
                                     <Field
                                         validate={notEmpty}
-                                        name="verification_number"
+                                        name="id"
                                         placeholder="Број потврде"
                                         type="input"
                                         as={UnderlineInput}
                                         notValid={
-                                            props.errors.verification_number &&
-                                            props.touched.verification_number
+                                            props.errors.id && props.touched.id
                                         }
                                     />
                                 </td>
@@ -54,13 +50,13 @@ export const AddTakenItems: React.FC<AddTakenItemsProps> = ({
                                 >
                                     <Field
                                         validate={notEmpty}
-                                        name="item_name"
+                                        name="delivered_to"
                                         placeholder="Достављено"
                                         type="input"
                                         as={UnderlineInput}
                                         notValid={
-                                            props.errors.item_name &&
-                                            props.touched.item_name
+                                            props.errors.delivered_to &&
+                                            props.touched.delivered_to
                                         }
                                     />
                                 </td>

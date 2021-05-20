@@ -11,10 +11,10 @@ interface AddReportedProps {
         | ((event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
         | undefined;
     onSubmit: (
-        id: string,
-        name: string,
         surname: string,
         fatherName: string,
+        name: string,
+        id: string,
         birth_place: string,
         residence: string
     ) => void | undefined;
@@ -30,12 +30,12 @@ export const AddReported: React.FC<AddReportedProps> = ({
                 onSubmit={async (data, actions) => {
                     actions.setSubmitting(true);
                     onSubmit(
-                        data.reported_id,
-                        data.reported_name,
                         data.reported_surname,
                         data.reported_father_name,
+                        data.reported_name,
+                        data.reported_id,
+                        data.reported_residence,
                         data.reported_birth_place,
-                        data.reported_residence
                     );
                     onClose ? onClose() : () => {};
                 }}

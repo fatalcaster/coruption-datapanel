@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryColumn, OneToMany, ManyToMany } from "typeorm";
+import { KU } from "./KU";
 import { TakenItem } from "./TakenItem";
 
 @Entity()
@@ -21,6 +22,6 @@ export class Reported {
     @Column()
     birth_place!: string;
 
-    @OneToMany((_type) => TakenItem, (item) => item.owner)
-    taken_items: TakenItem[];
+    @ManyToMany((_type) => KU, (ku) => ku.reported)
+    ku: KU[];
 }

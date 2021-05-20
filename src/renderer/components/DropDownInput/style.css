@@ -26,3 +26,7 @@ input::-webkit-calendar-picker-indicator {
 .listInput:focus {
     border-bottom: black solid 2px;
 }
+
+.invalid {
+    border-bottom: 2px #d9534f solid;
+}

@@ -26,8 +26,3 @@
     color: #808080;
     cursor: pointer;
 }
-
-.navItem:last-child {
-    margin-top: auto;
-    margin-bottom: 3rem;
-}

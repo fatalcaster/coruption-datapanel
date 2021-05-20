@@ -1,8 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import {
+    Entity,
+    Column,
+    PrimaryGeneratedColumn,
+    OneToMany,
+    BaseEntity,
+} from "typeorm";
 import { KU } from "./KU";
 
 @Entity()
-export class MeasureTaken {
+export class MeasureTaken extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 
@@ -16,5 +22,5 @@ export class MeasureTaken {
     forfeiture!: boolean;
 
     @OneToMany((_type) => KU, (ku) => ku.measure)
-    ku: KU[];
+    ku?: KU[];
 }

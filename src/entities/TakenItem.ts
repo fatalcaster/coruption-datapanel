@@ -1,11 +1,14 @@
-import { Entity, PrimaryColumn, ManyToOne } from "typeorm";
-import { Reported } from "./Reported";
+import { Entity, PrimaryColumn, ManyToOne, Column } from "typeorm";
+import { KU } from "./KU";
 
 @Entity()
 export class TakenItem {
     @PrimaryColumn()
     id!: string;
 
-    @ManyToOne((_type) => Reported, (author) => author.taken_items)
-    owner: Reported;
+    @Column()
+    delivered_to: string;
+
+    @ManyToOne((_type) => KU, (ku) => ku.taken_items)
+    ku!: KU;
 }

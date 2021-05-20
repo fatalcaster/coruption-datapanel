@@ -1,4 +1,4 @@
 interface TakenItem {
-    verification_number: string;
-    item_name: string;
+    id: string;
+    delivered_to: string;
 }

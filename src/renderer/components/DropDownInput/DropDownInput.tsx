@@ -20,10 +20,13 @@ export const DropDownInput: React.FC<DropDownInputProps> = (
         <div>
             <input
                 placeholder={props.placeholder}
-                className={styles.listInput}
+                className={`${styles.listInput} ${
+                    props.notValid ? styles.invalid : undefined
+                }`}
                 list={props.listOf}
                 name={props.name}
                 onChange={props.onChange}
+                value={props.value}
             />
             <datalist id={props.listOf} className={styles.listInput}>
                 {props.options.map((option, key) => (

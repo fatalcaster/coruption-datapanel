@@ -4,6 +4,7 @@ interface ContextRowProps {
     id: string;
     title: string;
     color: string;
+    fontSize?: string;
     onClick:
         | ((event?: React.MouseEvent<HTMLDivElement, MouseEvent>) => void)
         | undefined;
@@ -16,6 +17,7 @@ export const ContextRow: React.FC<ContextRowProps> = ({
     id,
     title,
     color,
+    fontSize,
     onClick,
     onClickOutside,
 }) => {
@@ -38,7 +40,7 @@ export const ContextRow: React.FC<ContextRowProps> = ({
             onClick={() => {
                 if (onClick) onClick();
             }}
-            style={{ backgroundColor: color }}
+            style={{ backgroundColor: color, fontSize: fontSize }}
             className={styles.menu}
         >
             {title}

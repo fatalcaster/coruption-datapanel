@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryColumn, OneToMany, ManyToMany } from "typeorm";
+import { KU } from "./KU";
 import { TakenItem } from "./TakenItem";
 
 @Entity()
@@ -11,4 +12,7 @@ export class DamagedLegalEntity {
 
     @Column()
     name!: string;
+
+    @ManyToMany((_type) => KU, (ku) => ku.DamagedLegalEntities)
+    ku: KU[];
 }

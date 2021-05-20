@@ -23,7 +23,13 @@ export const CriminalActsTable: React.FC<CriminalActsTableProps> = ({
         setActsList(newList);
     };
     const addAct = (name: string) => {
-        if (criminalActs && criminalActs.includes(name)) return;
+        console.log(
+            "BUG POSITION\n" +
+                criminalActs?.includes(name) +
+                "\n" +
+                JSON.stringify(criminalActs)
+        );
+        if (criminalActs?.includes(name)) return;
         const newList = criminalActs ? criminalActs.concat(name) : [name];
         setActsList(newList);
     };

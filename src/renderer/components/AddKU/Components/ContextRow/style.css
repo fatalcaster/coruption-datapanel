@@ -1,7 +1,7 @@
 .menu {
     display: flex;
     height: 100%;
-    width: 98%;
+    width: 100%;
     color: white;
     justify-content: center;
     align-items: center;
@@ -15,4 +15,5 @@
 .menu:hover {
     border: #333 2px solid;
     margin: 0;
+    cursor: pointer;
 }

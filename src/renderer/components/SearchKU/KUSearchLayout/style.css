@@ -5,22 +5,17 @@
 
 .containerMain {
     background-color: white;
-    overflow: auto;
+    overflow: hidden;
     width: 100%;
     height: 100%;
 }
 
-.containerLeft,
-.containerRight {
+.containerLeft {
     margin: 0.5rem;
     display: inline-flex;
     flex-direction: column;
-    width: 49.5%;
+    width: 90%;
     height: 100%;
-}
-
-.containerRight {
-    margin-top: 0;
 }
 
 .rowContainer {
@@ -52,7 +47,7 @@
 
 .titleColumn {
     text-align: left;
-    width: 20%;
+    width: 50%;
     max-width: 170px;
 }
 .calendarContainer {
@@ -61,16 +56,15 @@
 
 .KUMainButtonsCell {
     pointer-events: none;
-    position: absolute;
     top: 400px;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    z-index: 5;
     overflow: hidden;
 }
 .buttons {
+    align-self: center;
     pointer-events: all;
     margin: 15px;
     border: none;
@@ -105,4 +99,8 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+}
+
+.spacer {
+    width: 3em;
 }

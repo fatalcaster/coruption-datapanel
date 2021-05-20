@@ -21,6 +21,7 @@ export const DataTable: React.FC<DataTableProps> = ({
     twoInserts,
     children,
 }) => {
+    console.log("NESTO ZA PROVERU\n" + JSON.stringify(data));
     const [removingRow, setRemovingRow] = useState<number | undefined>(
         undefined
     );

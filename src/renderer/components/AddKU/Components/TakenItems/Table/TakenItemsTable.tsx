@@ -23,13 +23,13 @@ export const TakenItemsTable: React.FC<TakenItemsTableProps> = ({
         setItemsList(newList);
     };
 
-    const addItem = (verification_number: string, item_name: string) => {
+    const addItem = (id: string, delivered_to: string) => {
         const newList = takenItems
             ? takenItems.concat({
-                  verification_number,
-                  item_name,
+                  id,
+                  delivered_to,
               })
-            : [{ verification_number, item_name }];
+            : [{ id, delivered_to }];
         setItemsList(newList);
     };
     const headers = ["Број потврде", "Достављено"];

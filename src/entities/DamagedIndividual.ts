@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryColumn, OneToMany, ManyToMany } from "typeorm";
+import { KU } from "./KU";
 
 @Entity()
 export class DamagedIndividual {
@@ -16,4 +17,7 @@ export class DamagedIndividual {
 
     @Column()
     address!: string;
+
+    @ManyToMany((_type) => KU, (ku) => ku.DamagedIndividual)
+    ku: KU[];
 }

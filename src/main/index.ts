@@ -1,6 +1,6 @@
 "use strict";
 
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain, ipcRenderer } from "electron";
 import * as path from "path";
 import { format as formatUrl } from "url";
 import installExtension, {
@@ -8,8 +8,14 @@ import installExtension, {
 } from "electron-devtools-installer";
 import { createConnection } from "typeorm";
 
-// import { Worker } from "./../entities/Worker";
 import typeormConfig from "./../typeorm.config";
+import {
+    filterKU,
+    getKUDisplayData,
+    getKUEditData,
+    saveKU,
+    searchKU,
+} from "./Functionality/KU";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -60,8 +66,6 @@ function createMainWindow() {
     return window;
 }
 
-createConnection(typeormConfig);
-
 const main = async () => {
     // quit application when all windows are closed
     app.on("window-all-closed", () => {
@@ -84,7 +88,40 @@ const main = async () => {
         mainWindow = createMainWindow();
     });
 
-    //
+    createConnection(typeormConfig).then((_connection) => {
+        ipcMain.on("save-ku", async (event, data) => {
+            saveKU(data, mainWindow!);
+        });
+
+        ipcMain.on("ku-display-request", async (event, arg) => {
+            console.log("ARG\n", arg);
+            const data = await getKUDisplayData(0, 5);
+            if (arg.return) event.returnValue = data;
+            else
+                mainWindow!.webContents.send(
+                    "update-ku-display",
+                    await getKUDisplayData(0, 10)
+                );
+        });
+
+        ipcMain.on("ku-search-request", async (event, data) => {
+            searchKU(data.values, mainWindow!);
+        });
+
+        ipcMain.on("ku-filter-request", async (event, data) => {
+            filterKU(data.values, mainWindow!);
+        });
+        ipcMain.on("get-ku-edit", async (event, arg) => {
+            console.log("ARG\n", arg);
+            const data = await getKUEditData(arg);
+            event.returnValue = data;
+            // else
+            //     mainWindow!.webContents.send(
+            //         "update-ku-display",
+            //         await getKUDisplayData(0, 10)
+            //     );
+        });
+    });
 };
 
 main().catch((err) => {

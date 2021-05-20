@@ -1,8 +1,8 @@
 interface ReportedTableElements {
-    id: string;
-    name: string;
     surname: string;
-    father_name: string;
+    fathers_name: string;
+    name: string;
+    id: string;
     birth_place: string;
-    residence: string;
+    address: string;
 }

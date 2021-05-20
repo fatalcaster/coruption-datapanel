@@ -1,8 +1,18 @@
-import { Entity, PrimaryColumn, Column } from "typeorm";
+import {
+    Entity,
+    PrimaryColumn,
+    Column,
+    ManyToMany,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    Unique,
+    BaseEntity,
+} from "typeorm";
+import { KU } from "./KU";
 
 @Entity()
-export class Worker {
-    @PrimaryColumn()
+export class Worker extends BaseEntity {
+    @PrimaryGeneratedColumn()
     id!: string;
 
     @Column()
@@ -10,4 +20,9 @@ export class Worker {
 
     @Column()
     surname!: string;
+
+    @OneToMany((_type) => KU, (ku) => ku.clerk, {
+        cascade: true,
+    })
+    ku: KU[];
 }

@@ -22,12 +22,12 @@ export const AddLegalEntity: React.FC<AddLegalEntityProps> = ({
             <Formik
                 onSubmit={async (data, actions) => {
                     actions.setSubmitting(true);
-                    onSubmit(data.damaged_id, data.damaged_name, data.address);
+                    onSubmit(data.damaged_name, data.damaged_id, data.address);
                     onClose ? onClose() : () => {};
                 }}
                 initialValues={{
-                    damaged_id: "",
                     damaged_name: "",
+                    damaged_id: "",
                     address: "",
                 }}
             >
