@@ -3,12 +3,12 @@ import { PO } from "./PO";
 
 @Entity()
 export class Emergencie {
-    @PrimaryGeneratedColumn()
-    id!: number;
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @Column()
-    date!: Date;
+  @Column()
+  date!: Date;
 
-    @ManyToOne((_type) => PO, (po) => po.reports)
-    po: PO;
+  @ManyToOne((_type) => PO, (po) => po.reports)
+  po: PO;
 }

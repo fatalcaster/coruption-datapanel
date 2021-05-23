@@ -25,12 +25,16 @@ import { KUData, KUFilterParams, KUSearchParams } from "../Helpers/DataTypes";
 import { assignLSNumbers } from "../Helpers/EntityManagers/LSNumbersManager";
 import {
   getListDifference,
+  getProperty,
   KUDisplayData,
   propertyToString,
 } from "../Helpers/Utils";
 import { assignKUBasicProperties } from "../Helpers/EntityManagers/KUManager";
 import { assignMeasures } from "../Helpers/EntityManagers/MeasuresManger";
-import { assignCrimes } from "../Helpers/EntityManagers/CrimeManager";
+import {
+  assignCrimes,
+  getCrimes,
+} from "../Helpers/EntityManagers/CrimeManager";
 
 export async function saveKU(data: KUData, win: BrowserWindow) {
   try {
@@ -59,12 +63,16 @@ export async function saveKU(data: KUData, win: BrowserWindow) {
       connection
     );
     ku.crimes = await assignCrimes(data.criminalActs, ku, connection);
+    console.log("CRIMINAL I TAKO TO:" + JSON.stringify(ku.crimes));
+    await connection.manager.save(ku);
+
     const display = await connection
       .getRepository(KU)
       .createQueryBuilder("ku")
       .leftJoinAndSelect("ku.clerk", "worker")
       .leftJoinAndSelect("ku.ls_numbers", "lsnumber")
       .leftJoinAndSelect("ku.measure", "MeasureTaken")
+      .leftJoinAndSelect("ku.crimes", "Crime")
       .getMany();
     console.log("Proso sve\n" + JSON.stringify(display));
   } catch (err) {
@@ -265,19 +273,6 @@ export async function getWorkers() {
     workers.push(`${data[i].name} ${data[i].surname}`);
   }
   return workers;
-}
-
-export async function getCrimes() {
-  const data = await getConnection().getRepository(Crime).find();
-  let crimes = getProperty(data, "name");
-  if (!crimes) return null;
-  return crimes;
-}
-
-function getProperty(list: any[], property: string): any[] {
-  let new_list = list.map((o) => o[property]);
-  console.log(new_list);
-  return new_list;
 }
 
 export async function getStandardData() {

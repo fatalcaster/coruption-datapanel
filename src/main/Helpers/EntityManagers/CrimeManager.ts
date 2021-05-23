@@ -1,7 +1,7 @@
-import { Connection } from "typeorm";
+import { Connection, getConnection, getRepository } from "typeorm";
 import { Crime } from "../../../entities/Crime";
 import { KU } from "../../../entities/KU";
-import { addProperty, getListDifference } from "../Utils";
+import { addProperty, getListDifference, getProperty } from "../Utils";
 
 export async function assignCrimes(
   crimes: string[] | undefined,
@@ -12,35 +12,28 @@ export async function assignCrimes(
     return [];
   }
 
-  const existingCrimes = await connection
-    .getRepository(KU)
-    .createQueryBuilder("ku")
-    .where("number = :number", { number: ku.number })
-    .leftJoinAndSelect("ku.crimes", "crime")
-    .getMany();
-
   let temp = [];
 
   for (let i = 0; i < crimes.length; i++) {
-    temp.push({ ku: [ku], name: crimes[i] });
+    let k = new Crime();
+    k.name = crimes[i];
+    temp.push(k);
   }
+  console.log("TEMP: " + JSON.stringify(temp));
+  await connection
+    .createQueryBuilder()
+    .insert()
+    .into(Crime)
+    .values(temp)
+    .onConflict(`("name") DO NOTHING`)
+    .execute();
 
-  // Old minus new
-  const p = getListDifference(existingCrimes, temp, "name", 1);
-  console.log(p);
+  return temp;
+}
 
-  console.log("KRIMINAL\n" + crimes);
-
-  //new minus old
-  const d = getListDifference(existingCrimes, temp, "name", 2);
-  console.log(d);
-  // await connection
-  //   .createQueryBuilder()
-  //   .insert()
-  //   .into()
-  //   .values(ls)
-  //   .onConflict(`("number") DO NOTHING`)
-  //   .execute();
-
-  return [];
+export async function getCrimes() {
+  const data = await getConnection().getRepository(Crime).find();
+  let crimes = getProperty(data, "name");
+  if (!crimes) return null;
+  return crimes;
 }

@@ -72,16 +72,22 @@ export function addProperty<ListType, DataType>(
 export function getListDifference(
   list1: any[],
   list2: any[],
-  propertyToComapre: string,
+  propertyToCompare: string,
   listToReturn: 1 | 2 = 1
 ) {
   if (listToReturn == 1) {
     let difference = list1.filter(
-      (i) => !list2.some((k) => k[propertyToComapre] === i[propertyToComapre])
+      (i) => !list2.some((k) => k[propertyToCompare] === i[propertyToCompare])
     );
     return difference;
   } else
     return list2.filter(
-      (i) => !list1.some((k) => k[propertyToComapre] === i[propertyToComapre])
+      (i) => !list1.some((k) => k[propertyToCompare] === i[propertyToCompare])
     );
+}
+
+export function getProperty(list: any[], property: string): any[] {
+  let new_list = list.map((o) => o[property]);
+  console.log(new_list);
+  return new_list;
 }
