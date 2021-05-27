@@ -20,7 +20,4 @@ export class MeasureTaken extends BaseEntity {
 
     @Column()
     forfeiture!: boolean;
-
-    @OneToMany((_type) => KU, (ku) => ku.measure)
-    ku?: KU[];
 }

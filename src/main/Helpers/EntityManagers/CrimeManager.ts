@@ -1,11 +1,9 @@
-import { Connection, getConnection, getRepository } from "typeorm";
+import { Connection, getConnection } from "typeorm";
 import { Crime } from "../../../entities/Crime";
-import { KU } from "../../../entities/KU";
-import { addProperty, getListDifference, getProperty } from "../Utils";
+import { getProperty } from "../Utils";
 
 export async function assignCrimes(
     crimes: string[] | undefined,
-    ku: KU,
     connection: Connection
 ): Promise<Crime[]> {
     if (!crimes || crimes.length == 0) {

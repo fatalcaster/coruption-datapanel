@@ -59,7 +59,7 @@ export class KU extends BaseEntity {
     ls_numbers: LSNumber[];
 
     // Relation with the Worker Table
-    @ManyToOne((_type) => MeasureTaken, (measure) => measure.ku)
+    @ManyToOne(() => MeasureTaken)
     measure: MeasureTaken;
 
     // Relation with the Crime Table
@@ -72,9 +72,7 @@ export class KU extends BaseEntity {
     clerk!: Worker;
 
     // Relation with the Reported Table
-    @ManyToMany((_type) => Reported, (reported) => reported.ku, {
-        cascade: true,
-    })
+    @ManyToMany((_type) => Reported)
     @JoinTable()
     reported: Reported[];
 

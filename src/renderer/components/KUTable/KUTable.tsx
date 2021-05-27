@@ -150,9 +150,8 @@ export const KUTable: React.FC<KUTableRowProps> = ({ setUpEdit }) => {
                                                       "get-ku-edit",
                                                       data[index].ku_number
                                                   );
-                                              console.log(p);
-                                              //   setUp;
-                                              //   Edit(p);
+
+                                              setUpEdit(p);
                                           }}
                                           onClickOutside={() => {
                                               unsetEditContext();

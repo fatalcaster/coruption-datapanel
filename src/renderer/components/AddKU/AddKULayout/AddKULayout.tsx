@@ -41,7 +41,8 @@ export const AddKULayout: React.FC<AddKULayoutProps> = React.memo(
         const [LSNumbers, setLSNumbers] = useState<string[]>();
 
         // Lifted state from TakenItems table
-        const [takenItems, setItemsList] = useState<TakenItem[]>();
+        const [takenItems, setItemsList] =
+            useState<InterfaceHelpers.TakenItem[]>();
 
         // Lifted states from Damaged Tables
         const [damagedIndividuals, setDamagedIndividuals] =
@@ -87,19 +88,19 @@ export const AddKULayout: React.FC<AddKULayoutProps> = React.memo(
                                   clerk: "",
                               }
                     }
-                    onSubmit={async (values, actions) => {
-                        // const p = {
-                        //   values: values,
-                        //   criminalActs,
-                        //   reportedPeople,
-                        //   LSNumbers,
-                        //   takenItems,
-                        //   damagedIndividuals,
-                        //   damagedLegalEntities,
-                        // };
-                        const p = JSON.parse(
-                            `{"values":{"ku_number":"KU-1234/21","ku_file":"","case_number":"4354354","input_date":"","depravation":false,"imprisoning":true,"forfeiture":true,"ku_delivering_date":"2021-04-15","ska_date":"","po_connection":"","materialDamage":"3435411","euros":true,"ku_note":"Nema.","clerk":"Јелена Трајковић"},"criminalActs":["KrivicnoDelo"],"reportedPeople":[{"surname":"PrezimeP","fathers_name":"ImeOP","name":"ImeP","id":"3543544444354","address":"KGP","birth_place":"BGP"}],"LSNumbers":["354354531"],"takenItems":[{"id":"245443254","delivered_to":"KU"}],"damagedIndividuals":[{"id":"4735453413843","name":"ImeF","surname":"PrezimeF","father_name":"ImeOF","address":"KGF"}],"damagedLegalEntities":[{"id":"NazivF","name":"54242744","address":"KGF"}]}`
-                        );
+                    onSubmit={async (values, _actions) => {
+                        const p = {
+                            values: values,
+                            criminalActs,
+                            reportedPeople,
+                            LSNumbers,
+                            takenItems,
+                            damagedIndividuals,
+                            damagedLegalEntities,
+                        };
+                        // const p = JSON.parse(
+                        //     `{"values":{"ku_number":"KU-1234/21","ku_file":"","case_number":"4354354","input_date":"","depravation":false,"imprisoning":true,"forfeiture":true,"ku_delivering_date":"2021-04-15","ska_date":"","po_connection":"","materialDamage":"3435411","euros":true,"ku_note":"Nema.","clerk":"Јелена Трајковић"},"criminalActs":["KrivicnoDelo"],"reportedPeople":[{"surname":"PrezimeP","fathers_name":"ImeOP","name":"ImeP","id":"3543544444354","address":"KGP","birth_place":"BGP"}],"LSNumbers":["354354531"],"takenItems":[{"id":"245444323254","delivered_to":"KU"}],"damagedIndividuals":[{"id":"4735453413843","name":"ImeF","surname":"PrezimeF","father_name":"ImeOF","address":"KGF"}],"damagedLegalEntities":[{"id":"NazivF","name":"54242744","address":"KGF"}]}`
+                        // );
 
                         ipcRenderer.send("save-ku", p);
                     }}

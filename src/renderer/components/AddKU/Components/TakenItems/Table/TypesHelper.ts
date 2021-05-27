@@ -1,4 +1,6 @@
-interface TakenItem {
-    id: string;
-    delivered_to: string;
+namespace InterfaceHelpers {
+    export interface TakenItem {
+        id: string;
+        delivered_to: string;
+    }
 }

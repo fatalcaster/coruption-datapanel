@@ -21,7 +21,4 @@ export class Reported {
 
     @Column()
     birth_place!: string;
-
-    @ManyToMany((_type) => KU, (ku) => ku.reported)
-    ku: KU[];
 }
